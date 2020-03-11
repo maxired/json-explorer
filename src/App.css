@@ -3,6 +3,12 @@ em {
   font-style: normal;
 }
 
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -17,7 +23,22 @@ em {
   color: #fff;
   text-decoration: none;
 }
+.footer {
+  background-image: linear-gradient(to right, #380E7F, #380E7F);
+  color: #fff;
+  padding: 0rem 1rem ;
+  margin-top: 1rem;
+}
+.footer-title {
+  opacity: 0.8;
+}
+.footer-title a{
+  color: #fff;
+}
 
+.main-container{
+  flex-grow: 1;
+}
 .header-title {
   font-size: 1.2rem;
   font-weight: normal;

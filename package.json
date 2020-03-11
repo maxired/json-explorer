@@ -10,10 +10,8 @@
     "web-prod": "PUBLIC_URL=https://browse.retrolution.co yarn build && cd build && now --name browse -S retrolution"
   },
   "dependencies": {
-    "algoliasearch": "3.35.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-instantsearch-dom": "6.3.0",
     "react-scripts": "2.1.1"
   },
   "devDependencies": {
@@ -31,5 +29,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "homepage":"https://maxired.github.io/json-explorer/"
 }

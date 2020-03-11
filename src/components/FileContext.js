@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext, useEffect } from 'react';
+import { FilePickerComponent } from './FilePickerComponent';
 
 const JSONFileContext = React.createContext({
   data: [],
@@ -27,24 +28,45 @@ const getSubData = entries => {
   }
 };
 
+const fileContent = {};
+
 export const FilePicker = () => {
   const { setData } = useContext(JSONFileContext);
   const onChange = useCallback(
-    e => {
+    files => {
       const reader = new FileReader();
+      const file = files[0];
 
-      const fileName = e.nativeEvent.target.files[0];
+      window.history.pushState(
+        { file: file.name },
+        file.name,
+        `?file=${file.name}`
+      );
       reader.addEventListener('load', () => {
-        const entries = JSON.parse(reader.result);
-        setData(getSubData(entries));
+        try {
+          const entries = JSON.parse(reader.result);
+          fileContent[file.name] = entries;
+          setData(getSubData(entries));
+        } catch {
+          window.alert('please select a valid JSON file');
+        }
       });
 
-      reader.readAsText(fileName);
+      reader.readAsText(file);
     },
     [setData]
   );
 
-  return <input type="file" onChange={onChange} />;
+  useEffect(() => {
+    window.onpopstate = e => {
+      if (e && e.state && e.state.file && fileContent[e.state.file]) {
+        setData(fileContent[e.state.file]);
+      } else {
+        setData([]);
+      }
+    };
+  }, []);
+  return <FilePickerComponent onChange={onChange} />;
 };
 
 export default JSONFileContext;

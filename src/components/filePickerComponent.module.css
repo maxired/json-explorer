@@ -1,0 +1,8 @@
+.container { 
+    text-align: center;
+    margin: auto;
+    background: rgba(56,14,127, .1);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(56,14,127, 1);
+}
