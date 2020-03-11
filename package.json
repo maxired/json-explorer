@@ -7,7 +7,9 @@
     "build": "react-scripts build",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "web-prod": "PUBLIC_URL=https://browse.retrolution.co yarn build && cd build && now --name browse -S retrolution"
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+
   },
   "dependencies": {
     "react": "16.12.0",
@@ -21,6 +23,7 @@
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.17.0",
+    "gh-pages": "^2.2.0",
     "prettier": "1.19.1",
     "prop-types": "15.7.2"
   },
@@ -30,5 +33,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "homepage":"https://maxired.github.io/json-explorer/"
+  "homepage": "https://maxired.github.io/json-explorer/"
 }
